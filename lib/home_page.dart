@@ -38,7 +38,7 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   Future<List<Companies>> allCompanies() async {
-    var url = Uri.parse("https://focaburada.com/api/tum_ilceler.php");
+    var url = Uri.parse("https://focaburada.com/api/page/index.php");
     var cevap = await http.get(url);
     return parseCompaniesReturn(cevap.body);
   }

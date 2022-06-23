@@ -47,6 +47,7 @@ dependencies:
   flutter_phone_direct_caller: ^2.1.1
   pinch_zoom: ^1.0.0
   lazy_load_scrollview: ^1.3.0
+  location: ^4.4.0
 
 dev_dependencies:
   flutter_test:

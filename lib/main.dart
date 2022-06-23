@@ -8,14 +8,11 @@ import 'home_page.dart';
 
 String successmail;
 
-
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -30,7 +27,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-  class LoginPage extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -57,9 +54,10 @@ class _LoginPageState extends State<LoginPage> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   image: const DecorationImage(
-                      image: NetworkImage(
-                          "https://focaburada.com/doc/focalogo.jpg"),
-                      fit: BoxFit.fill)),
+                    image:
+                        NetworkImage("https://focaburada.com/doc/focalogo.jpg"),
+                    fit: BoxFit.fill,
+                  )),
             ),
             SizedBox(
               height: 30,
@@ -83,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                       keyboardType: TextInputType.text,
                       decoration: const InputDecoration(
                         contentPadding:
-                        EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+                            EdgeInsets.symmetric(vertical: 15, horizontal: 15),
                         labelText: 'E-posta',
                         prefixIcon: Icon(Icons.account_circle_rounded),
                         // enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.black,),),
@@ -117,7 +115,6 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ],
                     ),
-
                     Padding(
                       padding: const EdgeInsets.all(5.0),
                       child: Material(
@@ -135,7 +132,7 @@ class _LoginPageState extends State<LoginPage> {
                             child: Text(
                               "Giriş yap",
                               style:
-                              TextStyle(fontSize: 16, color: Colors.white),
+                                  TextStyle(fontSize: 16, color: Colors.white),
                             ),
                           ),
                         ),
@@ -165,7 +162,6 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     const SizedBox(
                       height: 10,
-
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -175,7 +171,6 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     const SizedBox(
                       height: 10,
-
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
@@ -195,11 +190,10 @@ class _LoginPageState extends State<LoginPage> {
                                     ),
                                   );
                                 },
-                                child: Text(
-                                    "Ziyaretçi olarak devam et",
-                                  style: TextStyle(
-                                 color: Colors.white,
-                                      fontWeight: FontWeight.w600)),
+                                child: Text("Ziyaretçi olarak devam et",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600)),
                               ),
                             ],
                           ),
@@ -210,8 +204,6 @@ class _LoginPageState extends State<LoginPage> {
                             borderRadius: BorderRadius.circular(50)),
                       ),
                     ),
-
-
                   ],
                 ),
               ),
@@ -233,7 +225,7 @@ class _LoginPageState extends State<LoginPage> {
         jsonData = json.decode(response.body);
         for (var i = 0; i < jsonData['users'].length; i++) {
           if (jsonData['users'][i]['e_mail'] == emailController.text &&
-              jsonData['users'][i]['pass']  == passController.text) {
+              jsonData['users'][i]['pass'] == passController.text) {
             successmail = emailController.text;
             Navigator.push(
               context,
@@ -243,10 +235,9 @@ class _LoginPageState extends State<LoginPage> {
             );
           }
         }
-      }
-      else {
-        ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text("Geçersiz Kullanıcı adı ya da şifre.")));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text("Geçersiz Kullanıcı adı ya da şifre.")));
       }
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
