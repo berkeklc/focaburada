@@ -1,7 +1,8 @@
 import 'dart:convert';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:focaburada/home_page.dart';
+import 'package:focaburada/modules/home/home_page.dart';
 import 'package:focaburada/widgets/text.dart';
 import 'package:http/http.dart' as http;
 
@@ -65,9 +66,11 @@ class OnBoard extends StatelessWidget {
                 child: Container(
                   child: Center(
                     child: Text(
-                        "Devam Et", style: TextStyle(
-                      color: Colors.white,
-                    ),),
+                      "Devam Et",
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                   height: 50,
                   width: MediaQuery.of(context).size.width - 100,
@@ -130,8 +133,8 @@ class _SignupState extends State<Signup> {
                               onTap: () {
                                 Navigator.pop(context);
                               },
-                              child: Image.network(
-                                "https://cdn-icons-png.flaticon.com/128/1617/1617543.png",
+                              child: CachedNetworkImage(
+                                imageUrl: "https://cdn-icons-png.flaticon.com/128/1617/1617543.png",
                                 height: 33,
                               ),
                             )
@@ -149,7 +152,7 @@ class _SignupState extends State<Signup> {
                                 borderRadius: BorderRadius.circular(10)),
                             child: Padding(
                               padding:
-                              const EdgeInsets.only(top: 5.0, left: 20),
+                                  const EdgeInsets.only(top: 5.0, left: 20),
                               child: TextFormField(
                                 controller: _email,
                                 decoration: const InputDecoration(
@@ -170,7 +173,7 @@ class _SignupState extends State<Signup> {
                                 borderRadius: BorderRadius.circular(10)),
                             child: Padding(
                               padding:
-                              const EdgeInsets.only(top: 5.0, left: 20),
+                                  const EdgeInsets.only(top: 5.0, left: 20),
                               child: TextFormField(
                                 controller: _password,
                                 decoration: const InputDecoration(
@@ -191,7 +194,7 @@ class _SignupState extends State<Signup> {
                                     RegistirationUser();
                                   },
                                   splashColor:
-                                  const Color.fromRGBO(128, 237, 153, 1),
+                                      const Color.fromRGBO(128, 237, 153, 1),
                                   child: const Padding(
                                     padding: EdgeInsets.symmetric(
                                         vertical: 15.0, horizontal: 100),
@@ -232,7 +235,7 @@ class _SignupState extends State<Signup> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(
-                             top:20, bottom: 20.0, left: 20, right: 20),
+                              top: 20, bottom: 20.0, left: 20, right: 20),
                           child: Container(
                             child: InkWell(
                               child: Row(
@@ -244,7 +247,7 @@ class _SignupState extends State<Signup> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => ChatPage(),
+                                          builder: (context) => HomePage(),
                                         ),
                                       );
                                     },
@@ -285,19 +288,18 @@ class _SignupState extends State<Signup> {
 
     print("Json Data: ${mapeddate}");
 
-    http.Response response = await http.post(Uri.parse(APIURL), body: mapeddate);
+    http.Response response =
+        await http.post(Uri.parse(APIURL), body: mapeddate);
 
     var data = jsonDecode(response.body);
 
-
-
-            successmail = emailController.text;
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => LoginPage(),
-              ),
-            );
+    successmail = emailController.text;
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => LoginPage(),
+      ),
+    );
 
     print("Data ${data}");
   }

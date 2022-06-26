@@ -1,10 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:ui';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:focaburada/register.dart';
 import 'package:http/http.dart' as http;
-import 'home_page.dart';
+import 'modules/home/home_page.dart';
 
 String successmail;
 
@@ -53,9 +54,10 @@ class _LoginPageState extends State<LoginPage> {
               height: 110,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  image: const DecorationImage(
-                    image:
-                        NetworkImage("https://focaburada.com/doc/focalogo.jpg"),
+                  image: DecorationImage(
+                    image: CachedNetworkImageProvider(
+                      "https://focaburada.com/doc/focalogo.jpg",
+                    ),
                     fit: BoxFit.fill,
                   )),
             ),
@@ -186,7 +188,7 @@ class _LoginPageState extends State<LoginPage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => ChatPage(),
+                                      builder: (context) => HomePage(),
                                     ),
                                   );
                                 },
@@ -230,7 +232,7 @@ class _LoginPageState extends State<LoginPage> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ChatPage(),
+                builder: (context) => HomePage(),
               ),
             );
           }

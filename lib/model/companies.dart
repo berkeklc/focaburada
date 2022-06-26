@@ -17,7 +17,7 @@ class Companies {
   String social_instagram;
   String social_facebook;
   String kategori_adi;
-  String galeri;
+  List<String> galeri;
   String semt_adi;
   LocationModel locationModel;
 
@@ -44,11 +44,32 @@ class Companies {
 
   factory Companies.fromJson(Map<String, dynamic> json) {
     LocationModel locationModel;
+    List<String> gallery = [];
 
     if (json['map_data'] != null) {
-      // Map<String, dynamic> _mapDataJson = jsonDecode(json['map_data']);
+      try {
+        Map<String, dynamic> _mapDataJson = jsonDecode(json['map_data'])[0];
 
-      // locationModel = LocationModel.fromJson(_mapDataJson);
+        locationModel = LocationModel.fromJson(_mapDataJson);
+      } catch (e) {
+        locationModel = null;
+      }
+    }
+
+    List _gallery;
+
+    try {
+      _gallery = json["galeri"] as List;
+    } catch (e) {
+      _gallery = [json["galeri"]];
+    }
+
+    if (_gallery != null) {
+      _gallery.forEach((imageName) {
+        if (imageName is String) {
+          gallery.add(imageName);
+        }
+      });
     }
 
     return Companies(
@@ -67,7 +88,7 @@ class Companies {
       social_instagram: json["social_instagram"] as String,
       social_facebook: json["social_facebook"] as String,
       kategori_adi: json["kategori_adi"] as String,
-      galeri: json["galeri"] as String,
+      galeri: gallery,
       semt_adi: json["semt_adi"] as String,
       locationModel: locationModel,
     );

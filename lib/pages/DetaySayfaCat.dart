@@ -1,5 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:focaburada/pages/DetaySayfa.dart';
-import 'package:focaburada/data/Companies.dart';
+import 'package:focaburada/model/companies.dart';
 import 'package:focaburada/data/CompaniesReturn.dart';
 import 'package:focaburada/data/Categories.dart';
 import 'package:flutter/material.dart';
@@ -158,7 +159,7 @@ class _DetaySayfaCatState extends State<DetaySayfaCat> {
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
                                       image: DecorationImage(
-                                          image: NetworkImage(
+                                          image: CachedNetworkImageProvider(
                                               "https://focaburada.com/doc/company/${companies.file1 == null ? "0.png" : companies.file1}"),
                                           fit: BoxFit.fill
                                       )

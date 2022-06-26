@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -6,7 +7,7 @@ import 'package:focaburada/theme/colors.dart';
 import 'package:focaburada/data/chats_json.dart';
 import '../data/Categories.dart';
 import '../data/CategoriesReturn.dart';
-import '../data/Companies.dart';
+import '../model/companies.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
@@ -79,7 +80,7 @@ class _ExplorePageState extends State<ExplorePage>
                       borderRadius: BorderRadius.circular(10),
                       image: const DecorationImage(
 
-                          image: NetworkImage(
+                          image: CachedNetworkImageProvider(
                               "https://focaburada.com/doc/focalogo.jpg"),
                           fit: BoxFit.contain)),
 
@@ -300,7 +301,7 @@ class _ExplorePageState extends State<ExplorePage>
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     image: DecorationImage(
-                                        image: NetworkImage(
+                                        image: CachedNetworkImageProvider(
                                             "https://focaburada.com/doc/company/${companies.file1}"),
                                         fit: BoxFit.fill
                                     )

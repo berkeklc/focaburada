@@ -33,6 +33,6 @@
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data android:name="flutterEmbedding" android:value="2" />
 
-        <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     </application>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 </manifest>
