@@ -49,5 +49,7 @@
 	<false/>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Google Maps Yönlendirme</string>
 </dict>
 </plist>

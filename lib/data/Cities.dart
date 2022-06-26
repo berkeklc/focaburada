@@ -1,4 +1,4 @@
-import 'package:focaburada/data/Companies.dart';
+import 'package:focaburada/model/companies.dart';
 
 class Cities {
   String wrap_id;
