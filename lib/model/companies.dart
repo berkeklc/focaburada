@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:focaburada/model/location_model.dart';
+import 'package:focaburada/model/model.dart';
 
 class Companies {
   String company_id;
@@ -21,6 +21,10 @@ class Companies {
   String semt_adi;
   LocationModel locationModel;
 
+  List<CompanyMenu> menus;
+  List<CompanySubMenu> subMenus;
+  List<MenuProduct> menuProducts;
+
   Companies({
     this.company_id,
     this.yetkili_isim,
@@ -40,6 +44,9 @@ class Companies {
     this.galeri,
     this.semt_adi,
     this.locationModel,
+    this.menus,
+    this.subMenus,
+    this.menuProducts,
   });
 
   factory Companies.fromJson(Map<String, dynamic> json) {
@@ -72,6 +79,10 @@ class Companies {
       });
     }
 
+    List<CompanyMenu> _menus = _setMenusFromJson(json);
+    List<CompanySubMenu> _subMenus = _setSubmenusFromJson(json);
+    List<MenuProduct> _menuProducts = _setMenuProductsFromJson(json);
+
     return Companies(
       company_id: json["company_id"] as String,
       yetkili_isim: json["yetkili_isim"] as String,
@@ -91,6 +102,44 @@ class Companies {
       galeri: gallery,
       semt_adi: json["semt_adi"] as String,
       locationModel: locationModel,
+      menus: _menus,
+      subMenus: _subMenus,
+      menuProducts: _menuProducts,
     );
+  }
+
+  static List<CompanyMenu> _setMenusFromJson(Map<String, dynamic> json) {
+    List _menus = json['menus'] as List;
+
+    if (_menus == null) return null;
+
+    if (_menus.isEmpty) return null;
+
+    return _menus
+        .map((_companyMenu) => CompanyMenu.fromJson(_companyMenu))
+        .toList();
+  }
+
+  static List<CompanySubMenu> _setSubmenusFromJson(Map<String, dynamic> json) {
+    List _subMenus = json['sub_menus'] as List;
+
+    if (_subMenus == null) return null;
+
+    if (_subMenus.isEmpty) return null;
+
+    return _subMenus
+        .map((_subMenu) => CompanySubMenu.fromJson(_subMenu))
+        .toList();
+  }
+
+  static List<MenuProduct> _setMenuProductsFromJson(json) {
+    List _menuProducts = json['menu_products'] as List;
+
+    if (_menuProducts == null) return null;
+    if (_menuProducts.isEmpty) return null;
+
+    return _menuProducts
+        .map((_menuProduct) => MenuProduct.fromJson(_menuProduct))
+        .toList();
   }
 }

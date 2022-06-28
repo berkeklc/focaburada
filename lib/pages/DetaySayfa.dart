@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:focaburada/modules/lightbox_images/lightbox_images.dart';
 import 'package:focaburada/modules/lightbox_images/lightbox_images_controller.dart';
 import 'package:focaburada/services/map_service.dart';
+import 'package:focaburada/widgets/company_menus_widget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pinch_zoom/pinch_zoom.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -295,6 +296,9 @@ class _DetaySayfaState extends State<DetaySayfa> {
                     ),
                   ),
                 ),
+              ),
+              CompanyMenusWidget(
+                company: widget.company,
               ),
               Divider(
                 thickness: 2,
